@@ -1,45 +1,47 @@
-# 🧾 Redey Celní Kontrola (FiveM ESX)
 
-Tento script umožňuje hráčům v ESX frameworku vyplnit a uložit **protokol o celní kontrole** jako předmět (`item`) v inventáři pomocí `ox_inventory`. Vyplněný formulář se zároveň odešle do vybraného Discord kanálu pomocí webhooku.
+# 🧾 Redey Customs Inspection (FiveM ESX)
 
----
-
-## ✅ Funkce
-
-- 📝 Vyplnění formuláře kontroly přes `lib.inputDialog`
-- 🎒 Uložení vyplněného formuláře jako item `cskontrola` do inventáře
-- 📤 Odeslání vyplněných údajů na Discord jako embed zpráva
-- ♻️ Možnost opětovného otevření a zobrazení dříve vyplněného protokolu
+This script allows players in the ESX framework to fill out and save a **customs inspection report** as an inventory **item** using `ox_inventory`. The completed form is also sent to a selected Discord channel via webhook.
 
 ---
 
-## 📦 Požadavky
+## ✅ Features
 
-- [`ox_inventory`](https://github.com/overextended/ox_inventory)
-- [`ox_lib`](https://github.com/overextended/ox_lib)
-- [`es_extended` v1.9+](https://github.com/esx-framework/es_extended)
-- `server.cfg` musí mít `ensure ox_lib` a `ensure ox_inventory` před tímto scriptem
+* 📝 Fill out the inspection form using `lib.inputDialog`
+* 🎒 Save the completed form as the `cskontrola` item in the inventory
+* 📤 Send the submitted data to Discord as an embed message
+* ♻️ Ability to reopen and view previously filled inspection reports
 
 ---
 
-## ⚙️ Instalace
+## 📦 Requirements
 
-1. **Vlož script do resources:**  
-   Nakopíruj složku `redey_cskontrola` do `resources/[local]/`
+* [`ox_inventory`](https://github.com/overextended/ox_inventory)
+* [`ox_lib`](https://github.com/overextended/ox_lib)
+* [`es_extended` v1.9+](https://github.com/esx-framework/es_extended)
+* `server.cfg` must include `ensure ox_lib` and `ensure ox_inventory` before this script
 
-2. **Zajisti správné pořadí v `server.cfg`:**
+---
+
+## ⚙️ Installation
+
+1. **Add the script to resources:**
+   Copy the folder `redey_cskontrola` into `resources/[local]/`
+
+2. **Make sure the order in `server.cfg` is correct:**
+
    ```cfg
    ensure ox_lib
    ensure ox_inventory
    ensure es_extended
    ensure redey_cskontrola
-``
+   ```
 
-3. **Zaregistruj item do `ox_inventory/data/items.lua`:**
+3. **Register the item in `ox_inventory/data/items.lua`:**
 
    ```lua
    ["cskontrola"] = {
-       label = "Protokol kontroly",
+       label = "Inspection Report",
        weight = 100,
        stack = false,
        client = {
@@ -48,32 +50,26 @@ Tento script umožňuje hráčům v ESX frameworku vyplnit a uložit **protokol 
    },
    ```
 
-4. **Nastav Discord webhook:**
-   V souboru `server/main.lua` uprav řádek s webhookem:
+4. **Set up the Discord webhook:**
+   In the file `server/main.lua`, update the webhook URL line:
 
    ```lua
-   local webhookURL = 'https://discord.com/api/webhooks/TVŮJ_WEBHOOK'
+   local webhookURL = 'https://discord.com/api/webhooks/YOUR_WEBHOOK'
    ```
 
 ---
 
-## 🧪 Použití
+## 🧪 Usage
 
-* Ve hře si přidej item `cskontrola` přes `ox_inventory`
-* Použij ho (např. přes F2)
-* Vyplň protokol a potvrď
-* Hotovo!
-  Item se aktualizuje s popisem a zpráva přijde na Discord
-
----
-
-## ✍️ Autor
-
-Tobias – \[Redey Scripts]
+* Add the `cskontrola` item to your inventory in-game via `ox_inventory`
+* Use it (e.g., by pressing F2)
+* Fill out and submit the report form
+* Done!
+  The item updates with a description and the message is sent to Discord
 
 ---
 
-## 📜 Licence
+## ✍️ Author
 
-Tento script je určen pro nekomerční využití. Úpravy povoleny, sdílení pouze se zachováním autorství.
+Redey – \[Redey Scripts]
 
