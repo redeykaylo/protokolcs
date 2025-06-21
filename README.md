@@ -33,3 +33,47 @@ Tento script umožňuje hráčům v ESX frameworku vyplnit a uložit **protokol 
    ensure ox_inventory
    ensure es_extended
    ensure redey_cskontrola
+``
+
+3. **Zaregistruj item do `ox_inventory/data/items.lua`:**
+
+   ```lua
+   ["cskontrola"] = {
+       label = "Protokol kontroly",
+       weight = 100,
+       stack = false,
+       client = {
+           export = "redey_cskontrola.useItem"
+       }
+   },
+   ```
+
+4. **Nastav Discord webhook:**
+   V souboru `server/main.lua` uprav řádek s webhookem:
+
+   ```lua
+   local webhookURL = 'https://discord.com/api/webhooks/TVŮJ_WEBHOOK'
+   ```
+
+---
+
+## 🧪 Použití
+
+* Ve hře si přidej item `cskontrola` přes `ox_inventory`
+* Použij ho (např. přes F2)
+* Vyplň protokol a potvrď
+* Hotovo!
+  Item se aktualizuje s popisem a zpráva přijde na Discord
+
+---
+
+## ✍️ Autor
+
+Tobias – \[Redey Scripts]
+
+---
+
+## 📜 Licence
+
+Tento script je určen pro nekomerční využití. Úpravy povoleny, sdílení pouze se zachováním autorství.
+
